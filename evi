@@ -1,0 +1,24 @@
+activate xxx进入某种环境(自己搭建的，一开始什么都没有，需要自己下载包)
+pip 下载工具 例如 pip install tensorflow
+conda 开源的软件包管理系统，用于安装多个版本的软件包及其依赖关系，为python而创建
+conda list 列出当前conda环境所链接的软件包
+conda creat knight 创建一个knight的环境
+conda create -n 环境名 -c 镜像源
+conda install 
+打开一个程序后，关闭程序ctrl + c
+
+conda是一种通用包管理系统，是想要构建和管理任何语言的任何类型的软件。因此，它也适用于Python包。
+Pip代表Pip Installs Packages，是Python的官方认可的包管理器，最常用于安装在Python包索引（PyPI）上发布的包。
+pip是Python包的通用管理器； conda是一个与语言无关的跨平台环境管理器。对于用户，最显着的区别可能是这样的：pip在任何环境中安装python包; conda安装在conda环境中装任何包。
+使用conda install 包的时候，默认是装在root环境下的。（来自网络）
+conda在指定环境下安装包：
+$conda install -n env_name pandas
+激活虚拟环境
+$source activate env_name
+退出虚拟环境
+$source deactivate env_name
+开多个终端快捷键(ios)
+$command +T
+————————————————
+版权声明：本文为CSDN博主「Codewithyunun」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_38267508/article/details/83345131
