@@ -1,5 +1,5 @@
 activate xxx进入某种环境(自己搭建的，一开始什么都没有，需要自己下载包)
-pip 下载工具 例如 pip install tensorflow
+pip 下载工具 例如 pip install tensorflow，是在当前环境下载
 conda 开源的软件包管理系统，用于安装多个版本的软件包及其依赖关系，为python而创建
 conda list 列出当前conda环境所链接的软件包
 conda creat knight 创建一个knight的环境
@@ -22,3 +22,86 @@ $command +T
 ————————————————
 版权声明：本文为CSDN博主「Codewithyunun」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/weixin_38267508/article/details/83345131
+
+
+Anaconda与conda区别 
+
+
+conda可以理解为一个工具，也是一个可执行命令，其核心功能是包管理与环境管理。包管理与pip的使用类似，环境管理则允许用户方便地安装不同版本的python并可以快速切换。 conda的设计理念——conda将几乎所有的工具、第三方包都当做package对待，甚至包括python和conda自身 Anaconda则是一个打包的集合，里面预装好了conda、某个版本的python、众多packages、科学计算工具等等。
+1、首先在所在系统中安装Anaconda。可以打开命令行输入conda -V检验是否安装以及当前conda的版本。
+2、conda常用的命令。
+1）conda list 查看安装了哪些包。
+2）conda env list 或 conda info -e 查看当前存在哪些虚拟环境
+3）conda update conda 检查更新当前conda
+3、创建Python虚拟环境。
+使用 conda create -n your_env_name python=X.X（2.7、3.6等） anaconda 命令创建python版本为X.X、名字为your_env_name的虚拟环境。your_env_name文件可以在Anaconda安装目录envs文件下找到。
+# 指定python版本为2.7，注意至少需要指定python版本或者要安装的包# 后一种情况下，自动安装最新python版本
+conda create -n env_name python=2.7
+# 同时安装必要的包
+conda create -n env_name numpy matplotlib python=2.7
+4、使用激活(或切换不同python版本)的虚拟环境。
+打开命令行输入python --version可以检查当前python的版本。
+使用如下命令即可 激活你的虚拟环境(即将python的版本改变)。
+Linux:  source activate your_env_name(虚拟环境名称)
+Windows: activate your_env_name(虚拟环境名称)
+这是再使用python --version可以检查当前python版本是否为想要的。
+5、对虚拟环境中安装额外的包。
+使用命令conda install -n your_env_name [package]即可安装package到your_env_name中
+6、关闭虚拟环境(即从当前环境退出返回使用PATH环境中的默认python版本)。
+使用如下命令即可。
+deactivate env_name，也可以使用`activate root`切回root环境
+Linux下使用 source deactivate 
+7、删除虚拟环境。
+移除环境
+使用命令conda remove -n your_env_name(虚拟环境名称) --all， 即可删除。
+删除环境中的某个包。
+使用命令conda remove --name $your_env_name  $package_name 即可。
+8、设置国内镜像
+如果需要安装很多packages，你会发现conda下载的速度经常很慢，因为Anaconda.org的服务器在国外。所幸的是，清华TUNA镜像源有Anaconda仓库的镜像，我们将其加入conda的配置即可：
+
+
+1
+2
+3
+4
+5
+6
+# 添加Anaconda的TUNA镜像
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+# TUNA的help中镜像地址加有引号，需要去掉
+ 
+# 设置搜索时显示通道地址
+conda config --set show_channel_urls yes
+
+
+环境的好处，功能和包更加集中，功能更加的单一化，提升速度
+我的环境搭建：
+conda create -n knight python=3.7 //建立 knight python版本为3.7的环境
+activate knight//激活环境
+pip install jupyter notebook
+pip install numpy
+pip install panda
+pip install matplotlib
+pip install tensorflow
+当搭建环境之后用pip install进行安装，安装分为镜像和直接安装，直接安装的速度较慢
+deactivate knight//退出环境
+
+为新的环境搭配核
+activate knight
+jupyter kernelspec list找到当前核
+如果名称不对，安装一个新核
+python -m ipykernel install --name knightkernel
+发现h还是报错，说明是默认之前的路径，删除前一个
+https://blog.csdn.net/sinat_34328764/article/details/83214172解决核问题不错
+jupyter kernelspec remove hello
+我的环境用deactivate无法退出，使用deactivate.bat可以
+要用conda activate进入才能正常退出
+xxxxx -V查看xxxx的版本信息
+
+
+
+
+
+
+
+
