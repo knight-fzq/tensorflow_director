@@ -1,1 +1,13 @@
-it is kind of a repository used for Eric fan to learn tensorflow
+一.基本概念
+1.数据流图：节点和有向边描述数学运算的有向无环图
+2.节点：通常为各类操作，包括数学运算，数据填充，结果输出，变量读写
+operation操作
+3.有向边：节点间的输入和输出的关系
+4.tensor：张量，即高维的数据
+5.flow：流动，张量沿着有向边在节点之间流动
+6.基于梯度下降法优化求解的机器学习问题，分为：前向图求值，后向图求梯度两个过程
+7.前向图：用户编码完成，包括定义模型目标函数，损失函数，输入输出数据的形状类型
+object function目标函数
+loss function损失函数
+shape形状
+dtype类型
